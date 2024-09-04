@@ -1,0 +1,103 @@
+create table Cidade 
+(idCidade number (7) not null, 
+ NomeCidade Varchar2(100)not null, 
+ UF Varchar2(2), 
+ Pais Varchar2(100), 
+ constraint cidade_PK 
+ Primary Key (idCidade))
+   
+insert into Cidade (idCidade, NomeCidade, UF, Pais) 
+values (1, 'São Leopoldo', 'RS', 'Brasil' ) 
+ 
+insert into Cidade (idCidade, NomeCidade, UF, Pais) 
+values (2, 'Porto Alegre', 'RS', 'Brasil' ) 
+ 
+insert into Cidade (idCidade, NomeCidade, UF, Pais) 
+values (3, 'Campo Bom', 'RS', 'Brasil' ) 
+ 
+insert into Cidade (idCidade, NomeCidade, UF, Pais) 
+values (10, 'Florianópolis', 'SC', 'Brasil' ) 
+ 
+insert into Cidade (idCidade, NomeCidade, UF, Pais) 
+values (11, 'São Paulo', 'SP', 'Brasil' ) 
+ 
+insert into Cidade (idCidade, NomeCidade, UF, Pais) 
+values (20, 'New York', null, 'EUA' )
+
+select*from Cidade
+    
+Create table Pessoa 
+(idPessoa number(7) not null, 
+ NomePessoa Varchar2(120) not null, 
+ Sexo Varchar2 (1), 
+ idCidade number(7) not null, 
+ VlrRenda number(12,2), 
+ Observacao Varchar2(100), 
+ Constraint PessoaPK 
+ Primary Key(IdPessoa), 
+ constraint PessoaCidade Foreign Key (idCidade)References Cidade(idCidade))
+
+desc Pessoa
+    
+insert into Pessoa (idPessoa. NomePessoa, Sexo, idCidade, VlrRenda, Observacao)
+insert into Pessoa values (1, 'Larissa', 'F', 1, 2800.00, 'null');
+insert into Pessoa values (2, 'Bruna', 'F',3, 3500.00, 'Alucicrazy');
+insert into Pessoa values (3, 'Daniel', 'M', 1, 500.000, 'AAAAAAA');
+insert into Pessoa values (4, 'Thomax', 'M', 10, 10.000, 'SAsas');
+insert into Pessoa values (5, 'Melissa', 'F', 11, 1500.00, 'Pobrezinha')
+
+select*from Pessoa order by idPessoa;
+
+select Pessoa.IdPessoa,
+	   Pessoa.NomePessoa,
+	   Cidade.IdCidade,
+	   Cidade.NomeCidade
+from Pessoa,Cidade
+where Pessoa.IdCidade=Cidade.IdCidade;
+
+create table Loja
+	    (idLoja number(5) not null,
+    	 NomeLoja varchar2(100) not null,
+    	 QtdFunci number(3),
+    	 idCidade number(7),
+ 		 Primary Key(IdLoja), 
+ 		 constraint idCidade_FK Foreign Key (idCidade)References Cidade(idCidade));
+    
+desc Loja
+drop table Loja -- Ajuste na tabela após rodar o código uma vez
+    
+insert into Loja (idLoja, NomeLoja, QtdFunci, idCidade)
+insert into Loja values (1, 'Frango Now', 2, 1);
+insert into Loja values (2, 'Frango imediatily', 1, 20);
+insert into Loja values (3, 'Franguinho Agorinha', 9, 3);
+insert into Loja values (4, 'AAAAAA', 3, 10);
+delete from Loja where idLoja=4
+
+select*from Loja order by idLoja
+
+-- EXERCICIO 1 - Selecione o idCidade, o nome da cidade, a UF, o nome da loja e a quantidade de funcionários.
+select Cidade.IdCidade,
+	   Cidade.NomeCidade,
+  	   Cidade.UF,
+	   Loja.NomeLoja,
+       Loja.QtdFunci
+from Loja,Cidade
+where Loja.IdCidade=Cidade.IdCidade;
+
+-- EXERCICIO 2 - Mostre as lojas com até 2 funcionários.
+select*from Loja Where QtdFunci<=2 -- ou pode ser select*from Loja Where QtdFunci<3
+
+-- EXERCICIO 3 - Mostre as lojas que tenham a letra 'a' no nome e a cidade onde estão localizadas.
+select Loja.NomeLoja, Cidade.NomeCidade from Loja, Cidade where Loja.idCidade = Cidade.idCidade and lower(NomeLoja) like '%a%'and Upper (NomeLoja) like '%A%';
+
+-- EXERCICIO 4 - Conte quantas lojas estão cadastradas no 'RS'.
+Select Count(*) from Loja, Cidade where Cidade.UF='RS'and Loja.idCidade=Cidade.idCidade;
+
+-- EXERCICIO 5 - Altere o nome da loja para 'SuperBarato' desde que o id seja igual a 1.
+update Loja set NomeLoja='Super Barato' where idLoja=1;
+
+-- EXERCICIO 6 - Apague a loja de código 2.
+delete from Loja where idLoja=2
+
+-- EXERCICIO 7 - Apague a cidade de código 3(talvez ocorra erro! Não podemos apagar registros com filhos).
+delete from Loja where idLoja=3
