@@ -100,4 +100,5 @@ update Loja set NomeLoja='Super Barato' where idLoja=1;
 delete from Loja where idLoja=2
 
 -- EXERCICIO 7 - Apague a cidade de código 3(talvez ocorra erro! Não podemos apagar registros com filhos).
-delete from Loja where idLoja=3
+--delete from Loja where idLoja=3 --Fiz errado
+delete from Cidade where idCidade=3
