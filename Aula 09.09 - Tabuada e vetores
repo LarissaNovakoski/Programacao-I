@@ -1,0 +1,89 @@
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int x, y, count, contador;
+            x = int.Parse(textBox1.Text);
+            y = int.Parse(textBox2.Text);
+            for (count = x; count <= y; count++)
+            {
+                listBox1.Items.Add("Tabuada do " + count.ToString() + ":");
+                for (contador = 1; contador <= 10; contador++)
+                {
+                    listBox1.Items.Add(count + "x" + contador + "=" + (count * contador).ToString());
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Declaração de Vetores
+            int[] vetor_idade = new int[10];
+            int i;
+            //preenchendo o vetor, lembrar que começa em zero
+            vetor_idade[0] = 49;
+            vetor_idade[1] = 14;
+            vetor_idade[2] = 15;
+            vetor_idade[3] = 23;
+            vetor_idade[4] = 39;
+            vetor_idade[5] = 31;
+            vetor_idade[6] = 82;
+            vetor_idade[7] = 94;
+            vetor_idade[8] = 2;
+            vetor_idade[9] = 6;
+            for (i = 0; i < 10; i++)
+            {
+                if (vetor_idade[i] % 2 == 0)
+                    listBox1.Items.Add(vetor_idade[i]);
+            }
+        }
+        //Crie um vetor de 20 posições. Preencha o vetor com valores aleatórios. No 1° listBox, mostre todos os valores. No 2° listBox,
+        //mostre os múltiplos de 4.
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Cria variável Randômica
+            Random var = new Random();
+            //Declaração de vetor(es)
+            int[] vet_idade = new int[20];
+            //carrega o vetor com valores aleatórios
+            for (int i = 0; i < 20; i++)
+            {
+                vet_idade[i] = var.Next(1, 95);
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                listBox1.Items.Add("Valor na posição " + i + "=" + vet_idade[i]);
+                if (vet_idade[i] % 4 == 0)
+                {
+                    listBox2.Items.Add(vet_idade[i]);
+                }
+            }
+        }
+        //Gere dois vetores de 10 posições com valores aleatórios. Mostre os vetores em 2 listBox. Mostre a multiplicação dos dois
+        //vetores em um 3° listBox
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Random var = new Random();
+            int[] vet1 = new int[10];
+            int[] vet2 = new int[10];
+            for (int i = 0; i < 10; i++)
+            {
+                vet1[i]=var.Next(1,100);
+                vet2[i]=var.Next(1,100);
+            }
+            for(int i = 0;i < 10; i++)
+            {
+                listBox1.Items.Add("[" + i + "] " + vet1[i]);
+                listBox2.Items.Add("[" + i + "] " + vet2[i]);
+                listBox3.Items.Add(vet1[i] +" x " + vet2[i] + " = " + vet1[i] * vet2[i]);
+            }
+
+        }
+    }
+}
