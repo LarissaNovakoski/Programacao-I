@@ -1,0 +1,85 @@
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        /* Faça um programa que lê três informações: Valor inicial, valor final e múltiplo.
+        Gere um vetor de 25 posições com valores aleatórios entre o valor incial e final e mostre apenas os valores múltiplos do
+        número informado.*/
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int a, b, c, i;
+            int[] vetor = new int[25];
+            a = int.Parse(textBox1.Text);
+            b = int.Parse(textBox2.Text);
+            c = int.Parse(textBox3.Text);
+            Random var = new Random();
+            for (i = 0; i < 25; i++)
+            {
+                vetor[i] = var.Next(a, b);
+
+                listBox1.Items.Add("Valor na posição " + i + "=" + vetor[i]);
+
+                if (vetor[i] % c == 0)
+                {
+                    listBox2.Items.Add(vetor[i].ToString());
+                }
+
+            }
+
+        }
+        /* Gere um vetor A e coloque as informações no List A (Vetor de 10 posições). Gere um vetor B e 
+         * Coloque as informações no List B. Multiplique a primeira posição do vetor A pela última posição 
+         * do vetor B. A segunda posição do Vetor A pela penúltima do B, e assim segue.*/
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int[] vetorA = new int[10];
+            int[] vetorB = new int[10];
+            int i;
+            Random var = new Random();
+            for (i = 0; i < 10; i++)
+            {
+                vetorA[i] = var.Next(1, 100);
+                vetorB[i] = var.Next(1, 100);
+
+                listBox1.Items.Add("Valor na posição " + i + "=" + vetorA[i]);
+                listBox2.Items.Add("Valor na posição " + i + "=" + vetorB[i]);
+            }
+
+            for (i = 0; i<10; i++)
+            {
+                listBox3.Items.Add(vetorA[i] * vetorB[9 - i]);
+            }
+        }
+        /*Faça um programa que gera uma matriz de 5x5. Preencha a diagonal da matriz com valores aleatórios. 
+          Mostre em um ListBox.*/
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int[,] matriz = new int[5,5];
+            int i,j;
+            Random var= new Random();
+            for(i=0; i<5; i++)
+            {
+                for(j=0; j<5; j++) 
+                {
+
+                    if (i == j)
+                    {
+                        matriz[i, j] = var.Next(1, 30);
+                    }
+                    else
+                    {
+                        matriz[i, j] = 0;
+                    }
+                  listBox1.Items.Add(matriz[i,j]);
+                    
+                }
+            }
+
+        }
+
+
+
+    }
+}
