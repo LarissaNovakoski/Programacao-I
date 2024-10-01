@@ -1,0 +1,72 @@
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        // 1- Faça um programa que mostre no list box os valores entre 20 e 30. 
+        //Use o combo While.
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int x = 21;
+            while (x < 30)
+            {
+                listBox1.Items.Add(x.ToString());
+                x++;
+            }
+        }
+        // 2 - Altere o exercício 1, coloque um textBox.O loop deve mostrar os n°s múltiplos do número digitado.
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int x = 21, a;
+            a = int.Parse(textBox1.Text);
+            while (x < 30)
+            {
+
+                if (x % a == 0)
+                {
+                    listBox1.Items.Add("O valor " + x.ToString() + " é múltiplo de " + a.ToString());
+                }
+                x++;
+            }
+        }
+        //Crie um vetor de 10 posições. Preencha o vetor com valores aleatórios entre 0 e 20.
+        //Mostre os dados do vetor em um listBox. Use o comando While.
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int[] vetor = new int[10];
+            int i = 0;
+            Random var = new Random();
+
+            while (i < 10)
+            {
+                vetor[i] = var.Next(0, 20);
+                listBox1.Items.Add(vetor[i]);
+                i++;
+            }
+        }
+        //Faça um programa que calcule a área de um triângulo, um retângulo e um círculo. 
+        //Use o combobox para que o usuário escolha a área.
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0)
+            {
+                double calculatriangulo = (double.Parse(textBox1.Text) * double.Parse(textBox2.Text)) / 2;
+                MessageBox.Show(calculatriangulo.ToString());
+            }
+
+            if (comboBox1.SelectedIndex == 1)
+            {
+                double calcularetangulo = (double.Parse(textBox1.Text) * double.Parse(textBox2.Text));
+                MessageBox.Show(calcularetangulo.ToString());
+            }
+
+            if (comboBox1.SelectedIndex == 2)
+            {
+                double a=double.Parse(textBox1.Text);
+                double calculacirculo = Math.Pow(a,2) * Math.PI;
+                MessageBox.Show(calculacirculo.ToString());
+            }
+        }
+    }
+}
