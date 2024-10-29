@@ -45,3 +45,38 @@
                 MessageBox.Show("Erro desconhecido.");
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int[] vetorA = new int[10];
+                int[] vetorB = new int[10];
+                int i;
+                int a;
+                Random var = new Random();
+                for (i = 0; i < 10; i++)
+                {
+                    vetorA[i] = var.Next(-10, 10);
+                    vetorB[i] = var.Next(-10, 10);
+
+                    listBox1.Items.Add("Valor na posição " + i + "=" + vetorA[i]);
+                    listBox2.Items.Add("Valor na posição " + i + "=" + vetorB[i]);
+                }
+
+                for (i = 0; i < 10; i++)
+                {
+                    a = vetorA[i] * vetorB[9 - i];
+                    if (a >= 0)
+                    { 
+                    listBox3.Items.Add(a);
+                    }
+                }
+
+
+            }
+            catch 
+            { 
+                MessageBox.Show("Erro desconhecido."); 
+            }
+        }
