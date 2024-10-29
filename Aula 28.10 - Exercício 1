@@ -1,0 +1,47 @@
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                double a = double.Parse(textBox1.Text);
+                double b = 0, c = 0;
+                if (a <= 0)
+                {
+                    MessageBox.Show("Por favor, digite um valor positivo.");
+                }
+                if (a > 0 && a <= 24511.92)
+                {
+                    MessageBox.Show("A porcentagem é de 0%.");
+                    MessageBox.Show("O valor líquido é de: " + a);
+                }
+                if (a >= 24511.93 && a < 33919.80)
+                {
+                    MessageBox.Show("A porcentagem é de 7,5%.");
+                    b = 7.5 / 100 * a;
+                    MessageBox.Show("O valor líquido é de: " + (a - b));
+                }
+                if (a >= 33919.81 && a < 45012.60)
+                {
+                    MessageBox.Show("A porcentagem é de 15%.");
+                    b = (0.015) * a;
+                    c = a - b;
+                    MessageBox.Show("O valor líquido é de: " + c);
+                }
+                if (a >= 45012.61 && a < 55976.16)
+                {
+                    MessageBox.Show("A porcentagem é de 22,5%.");
+                    b = 22.5 / 100 * a;
+                    MessageBox.Show("O valor líquido é de: " + (a - b));
+                }
+                if (a > 55976.17)
+                {
+                    MessageBox.Show("A porcentagem é de 27,5%.");
+                    b = 27.5 / 100 * a;
+                    MessageBox.Show("O valor líquido é de: " + (a - b));
+                }
+
+            }
+            catch 
+            {
+                MessageBox.Show("Erro desconhecido.");
+            }
+        }
