@@ -1,0 +1,101 @@
+using System.Windows.Forms;
+
+namespace Prova_1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int a;
+                a = int.Parse(textBox1.Text);
+
+                if (a < 5)
+                {
+                    MessageBox.Show("Digite uma idade acima de 5 anos!");
+                }
+
+                if (a >= 5 && a <= 7)
+                {
+                    MessageBox.Show("Infantil A.");
+                }
+
+                if (a >= 8 && a <= 11)
+                {
+                    MessageBox.Show("Infantil B.");
+                }
+
+                if (a >= 12 && a <= 13)
+                {
+                    MessageBox.Show("Juvenil A.");
+                }
+
+                if (a >= 14 && a <= 17)
+                {
+                    MessageBox.Show("Juvenil B.");
+                }
+
+                if (a >= 18)
+                {
+                    MessageBox.Show("Adulto.");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Erro desconhecido!");
+            }
+
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int[] vetor = new int[10];
+                int i;
+                int a = 50;
+                int b = 0;
+                int c = 0;
+                int soma = 0;
+                Random var = new Random();
+
+                for (i = 0; i < 10; i++)
+                {
+                    vetor[i] = var.Next(0, 42);
+                    listBox1.Items.Add("Temperatura registrada: " + vetor[i] + "°");
+
+                    //a) Menor temperatura do ano
+                    if (vetor[i] < a)
+                    {
+                        a = vetor[i];
+                    }
+                    //b) Maior temperatura do ano
+                    if (vetor[i] > b)
+                    {
+                        b = vetor[i];
+                    }
+                    //c) Temperatura média anual
+                    soma = soma + vetor[i];
+                    c = soma / 10;
+                }
+
+
+                listBox2.Items.Add("Menor temperatura registrada:" + a + "°");
+                listBox2.Items.Add("Maior temperatura registrada:" + b + "°");
+                listBox2.Items.Add("Media das temperaturas registradas:" + c + "°");
+
+            }
+            catch { MessageBox.Show("Erro desconhecido!"); }
+        }
